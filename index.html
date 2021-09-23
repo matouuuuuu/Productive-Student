@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <title>Productive Student</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Farro&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+  <script src="jquery-ui-touch-punch-master/jquery.ui.touch-punch.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
+    integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css"
+    integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="favico/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16x16.png">
+  <link rel="manifest" href="favico/site.webmanifest">
+
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</head>
+<header>
+
+  <img src="images/logoSmall 1.png">
+
+  <div>
+    <div class="theme-switch-wrapper">
+      <label class="theme-switch" for="checkbox">
+        <input onchange="switchTheme(this)" type="checkbox" id="checkbox" />
+        <div class="slider round"></div>
+      </label>
+    </div>
+
+    <button onclick="exportWidget()">Sauvegarder</button>
+
+
+    <svg onclick="sort()" version="1.1" id="dragAndDrop" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 512 512"
+      style="enable-background:new 0 0 512 512;" xml:space="preserve">
+      <g>
+        <g>
+          <path d="M458.667,192H352c-5.888,0-10.667,4.779-10.667,10.667s4.779,10.667,10.667,10.667h106.667c17.643,0,32,14.357,32,32
+          v213.333c0,17.643-14.357,32-32,32H245.333c-17.643,0-32-14.357-32-32v-85.333c0-5.888-4.779-10.667-10.667-10.667
+          S192,367.445,192,373.333v85.333C192,488.064,215.936,512,245.333,512h213.333C488.064,512,512,488.064,512,458.667V245.333
+          C512,215.936,488.064,192,458.667,192z" />
+        </g>
+      </g>
+      <g>
+        <g>
+          <path d="M160,298.667h-10.667c-5.888,0-10.667,4.779-10.667,10.667S143.445,320,149.333,320H160
+          c5.888,0,10.667-4.779,10.667-10.667S165.888,298.667,160,298.667z" />
+        </g>
+      </g>
+      <g>
+        <g>
+          <g>
+            <path d="M62.741,0h-9.408C48.235,0,43.2,0.725,38.357,2.133c-5.653,1.664-8.896,7.595-7.253,13.248
+            c1.365,4.651,5.632,7.659,10.24,7.659c1.003,0,2.005-0.128,3.008-0.427c2.901-0.853,5.909-1.28,8.981-1.28h9.408
+            c5.909,0,10.667-4.779,10.667-10.667S68.629,0,62.741,0z" />
+            <path d="M21.333,257.216v-21.568c0-5.888-4.779-10.667-10.667-10.667S0,229.76,0,235.648v21.568
+            c0,5.888,4.779,10.667,10.667,10.667S21.333,263.104,21.333,257.216z" />
+            <path d="M10.667,203.179c5.888,0,10.667-4.779,10.667-10.667v-21.568c0-5.888-4.779-10.667-10.667-10.667S0,165.056,0,170.944
+            v21.568C0,198.4,4.779,203.179,10.667,203.179z" />
+            <path d="M10.667,73.792c5.888,0,10.667-4.779,10.667-10.667v-9.792c0-2.965,0.405-5.888,1.195-8.704
+            c1.6-5.675-1.685-11.563-7.36-13.163c-5.632-1.685-11.563,1.664-13.163,7.36C0.683,43.541,0,48.427,0,53.333v9.792
+            C0,69.013,4.779,73.792,10.667,73.792z" />
+            <path d="M10.667,138.496c5.888,0,10.667-4.779,10.667-10.667v-21.568c0-5.888-4.779-10.667-10.667-10.667S0,100.373,0,106.261
+            v21.568C0,133.717,4.779,138.496,10.667,138.496z" />
+            <path d="M44.587,297.451c-5.163-1.472-9.941-4.267-13.781-8.085c-4.16-4.16-10.923-4.117-15.083,0.043
+            c-4.16,4.181-4.139,10.944,0.043,15.083c6.4,6.379,14.357,11.029,22.997,13.483c0.981,0.277,1.963,0.405,2.923,0.405
+            c4.629,0,8.917-3.051,10.24-7.744C53.547,304.96,50.261,299.051,44.587,297.451z" />
+            <path d="M307.605,51.968c0.981,0,1.984-0.128,2.987-0.448c5.653-1.664,8.917-7.573,7.253-13.227
+            c-2.517-8.619-7.253-16.533-13.675-22.891c-4.181-4.139-10.944-4.117-15.083,0.085c-4.139,4.181-4.096,10.944,0.085,15.083
+            c3.84,3.84,6.699,8.576,8.192,13.717C298.731,48.939,302.976,51.968,307.605,51.968z" />
+            <path d="M256.832,0h-21.568c-5.888,0-10.667,4.779-10.667,10.667s4.779,10.667,10.667,10.667h21.568
+            c5.888,0,10.667-4.779,10.667-10.667S262.72,0,256.832,0z" />
+            <path d="M106.219,298.667H84.651c-5.888,0-10.667,4.779-10.667,10.667S78.763,320,84.651,320h21.568
+            c5.888,0,10.667-4.779,10.667-10.667S112.107,298.667,106.219,298.667z" />
+            <path d="M309.333,73.6c-5.888,0-10.667,4.779-10.667,10.667v21.568c0,5.888,4.779,10.667,10.667,10.667S320,111.723,320,105.835
+            V84.267C320,78.357,315.221,73.6,309.333,73.6z" />
+            <path d="M192.149,0h-21.568c-5.909,0-10.667,4.779-10.667,10.667s4.779,10.667,10.667,10.667h21.547
+            c5.909,0,10.688-4.779,10.688-10.667S198.037,0,192.149,0z" />
+            <path d="M127.445,0h-21.568c-5.888,0-10.667,4.779-10.667,10.667s4.779,10.667,10.667,10.667h21.568
+            c5.888,0,10.667-4.779,10.667-10.667S133.333,0,127.445,0z" />
+          </g>
+        </g>
+      </g>
+      <g>
+        <g>
+          <path d="M309.333,138.667c-5.888,0-10.667,4.779-10.667,10.667V160c0,5.888,4.779,10.667,10.667,10.667S320,165.888,320,160
+          v-10.667C320,143.445,315.221,138.667,309.333,138.667z" />
+        </g>
+      </g>
+      <g>
+        <g>
+          <path d="M349.952,185.515l-33.067-33.067c-12.971-12.971-34.112-12.971-47.083,0c-3.883,3.883-6.613,8.512-8.171,13.419
+          c-11.627-4.053-25.536-1.045-34.496,7.915c-4.885,4.885-7.915,10.923-9.131,17.237c-10.176-1.429-20.8,2.027-28.203,9.429
+          c-7.083,7.083-10.304,16.576-9.664,25.856c-7.189,0.981-13.824,4.245-19.029,9.451c-6.293,6.293-9.749,14.656-9.749,23.552
+          s3.456,17.28,9.749,23.552l9.557,9.557v38.251C170.667,360.064,194.603,384,224,384h43.733C331.84,384,384,331.84,384,267.733
+          C384,236.693,371.904,207.488,349.952,185.515z M267.733,362.667H224c-17.643,0-32-14.357-32-32v-16.917l24.469,24.469
+          c4.16,4.16,10.923,4.16,15.083,0c2.069-2.091,3.115-4.821,3.115-7.552c0-2.731-1.045-5.461-3.115-7.552l-55.36-55.36
+          c-2.261-2.24-3.499-5.269-3.499-8.448c0-3.179,1.237-6.187,3.499-8.448c4.523-4.523,12.395-4.523,16.917,0l23.36,23.36
+          c4.16,4.16,10.923,4.16,15.083,0c2.069-2.091,3.115-4.821,3.115-7.552c0-2.731-1.045-5.461-3.115-7.531l-26.667-26.667
+          c-4.672-4.672-4.672-12.245,0-16.917c4.523-4.523,12.395-4.523,16.917,0l16,16c4.16,4.16,10.923,4.16,15.083,0
+          c2.069-2.091,3.115-4.821,3.115-7.552s-1.045-5.461-3.115-7.531l-10.667-10.667c-4.672-4.672-4.672-12.245,0-16.917
+          c4.523-4.523,12.395-4.523,16.917,0l10.667,10.667c4.16,4.16,10.923,4.16,15.083,0c2.069-2.091,3.115-4.821,3.115-7.552
+          s-1.045-5.461-3.136-7.552c-2.261-2.24-3.499-5.248-3.499-8.448s1.259-6.208,3.52-8.448c4.672-4.672,12.245-4.672,16.917,0
+          l33.067,33.067c17.92,17.92,27.797,41.771,27.797,67.115C362.667,320.085,320.085,362.667,267.733,362.667z" />
+        </g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+      <g>
+      </g>
+    </svg>
+
+
+    <img id="trash" onclick="removeWidget()" src="images/deleteclosed.png">
+    <svg id="settingsIcon" onclick="openSettings()" version="1.1" xmlns="http://www.w3.org/2000/svg"
+      xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 25 25.001"
+      style="enable-background:new 0 0 25 25.001;" xml:space="preserve">
+      <g>
+        <path d="M24.38,10.175l-2.231-0.268c-0.228-0.851-0.562-1.655-0.992-2.401l1.387-1.763c0.212-0.271,0.188-0.69-0.057-0.934
+		l-2.299-2.3c-0.242-0.243-0.662-0.269-0.934-0.057l-1.766,1.389c-0.743-0.43-1.547-0.764-2.396-0.99L14.825,0.62
+		C14.784,0.279,14.469,0,14.125,0h-3.252c-0.344,0-0.659,0.279-0.699,0.62L9.906,2.851c-0.85,0.227-1.655,0.562-2.398,0.991
+		L5.743,2.455c-0.27-0.212-0.69-0.187-0.933,0.056L2.51,4.812C2.268,5.054,2.243,5.474,2.456,5.746L3.842,7.51
+		c-0.43,0.744-0.764,1.549-0.991,2.4l-2.23,0.267C0.28,10.217,0,10.532,0,10.877v3.252c0,0.344,0.279,0.657,0.621,0.699l2.231,0.268
+		c0.228,0.848,0.561,1.652,0.991,2.396l-1.386,1.766c-0.211,0.271-0.187,0.69,0.057,0.934l2.296,2.301
+		c0.243,0.242,0.663,0.269,0.933,0.057l1.766-1.39c0.744,0.43,1.548,0.765,2.398,0.991l0.268,2.23
+		c0.041,0.342,0.355,0.62,0.699,0.62h3.252c0.345,0,0.659-0.278,0.699-0.62l0.268-2.23c0.851-0.228,1.655-0.562,2.398-0.991
+		l1.766,1.387c0.271,0.212,0.69,0.187,0.933-0.056l2.299-2.301c0.244-0.242,0.269-0.662,0.056-0.935l-1.388-1.764
+		c0.431-0.744,0.764-1.548,0.992-2.397l2.23-0.268C24.721,14.785,25,14.473,25,14.127v-3.252
+		C25.001,10.529,24.723,10.216,24.38,10.175z M12.501,18.75c-3.452,0-6.25-2.798-6.25-6.25s2.798-6.25,6.25-6.25
+		s6.25,2.798,6.25,6.25S15.954,18.75,12.501,18.75z" />
+      </g>
+    </svg>
+
+
+
+  </div>
+
+</header>
+
+<body>
+  <lottie-player id="loading" src="images/animation/lf30_editor_wzpf3ohs.json" background="transparent" speed="1"
+    style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+
+  <div id="main-screen">
+
+
+
+    <div id="addMenu">
+
+
+
+
+      <button onclick="addButtonClicked()" id="addButton"><svg version="1.1" class="svgMenu" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+        width="45.402px" height="45.402px" viewBox="0 0 45.402 45.402" style="enable-background:new 0 0 45.402 45.402;"
+        xml:space="preserve">
+     <g>
+       <path d="M41.267,18.557H26.832V4.134C26.832,1.851,24.99,0,22.707,0c-2.283,0-4.124,1.851-4.124,4.135v14.432H4.141
+         c-2.283,0-4.139,1.851-4.138,4.135c-0.001,1.141,0.46,2.187,1.207,2.934c0.748,0.749,1.78,1.222,2.92,1.222h14.453V41.27
+         c0,1.142,0.453,2.176,1.201,2.922c0.748,0.748,1.777,1.211,2.919,1.211c2.282,0,4.129-1.851,4.129-4.133V26.857h14.435
+         c2.283,0,4.134-1.867,4.133-4.15C45.399,20.425,43.548,18.557,41.267,18.557z"/>
+     </g>
+     </svg>
+     </button>
+      <div id="addMenuSelectable">
+        <p>Choissisez un widget :</p>
+        <button onclick="addVelov()">Vélo'v</button>
+        <button onclick="addTomuss()">Tomuss</button>
+        <button onclick="addTexteLibre()">Texte Libre</button>
+        <button onclick="openTCL()">TCL</button>
+        <button onclick="addCal()">Calendrier</button>
+      </div>
+      <div id="addMenuSelectable2">
+        <p>Choissisez un widget :</p>
+        <button onclick="addTCL()">TCL</button>
+        <button onclick="addAlertTCL()">Alerte TCL</button>
+      </div>
+
+    </div>
+
+    <div class="placeholder">
+
+    </div>
+    <div class="placeholder">
+
+    </div>
+    <div class="placeholder">
+
+    </div>
+    <div class="placeholder">
+
+    </div>
+    <div class="placeholder">
+
+    </div>
+    <div class="placeholder">
+
+    </div>
+
+
+  </div>
+  <div id="settings">
+
+    <span id="closeMenuButton" onclick="closeSettingMenu()">&#10540;</span>
+
+    <h3>Créateur de l'application</h3>
+    <div class="auteur">
+      <div>
+        <img src="images/profil/gianinavette.png">
+        <p>Giani Navette</p>
+      </div>
+      <div>
+        <img src="images/profil/matiaschatelet.png">
+        <p>Matias Chatelet</p>
+      </div>
+      <div>
+        <img src="images/profil/contacts-google.png">
+        <p>Henry Savigny</p>
+      </div>
+      <div>
+        <img src="images/profil/contacts-google.png">
+        <p>Antoine Combet</p>
+      </div>
+    </div>
+    <p>Nous étudiants de l'IUT Lyon 1 DOUA avons créé <b>Productive Student</b>, une WebApp qui a pour but de
+      simplifier la vie des étudiants
+      en regroupant les informations essentielles pour organiser leur vie dans le cadre de notre projet PTUT.
+    </p>
+    <div class="settingsParentContent">
+      <div>
+        <h3>Vous pouvez modifier les couleurs du site</h3><button onclick="openPopup(colorSettings)">Modifier</button>
+      </div>
+    </div>
+    <div>
+      <h3>Ou ajouter du CSS personnalisée</h3>
+      <button onclick="openPopup(cssSettings)">Ajouter</button>
+
+    </div>
+    <div>
+      <h3>Autres :</h3>
+      <button onclick="disconnectFromApp()">Déconnexion</button>
+
+    </div>
+
+  </div>
+  <div id="cssSettings">
+    <span onclick="closePopup(cssSettings)">&#10540;</span>
+    <div>
+      <div>
+        <p>Customiser le css :</p>
+      </div>
+      <textarea oninput="customCSS()" id="cssPerso"></textarea>
+    </div>
+
+  </div>
+  <div id="colorSettings">
+    <span onclick="closePopup(colorSettings)">&#10540;</span>
+    <div>
+      <div>
+        <p>Palette de couleur :</p>
+      </div>
+      <div>
+        <p>Couleur d'accent</p>
+        <input oninput="colorChanging(this)" type="color" id="accentColor">
+      </div>
+      <div>
+        <p>Couleur du fond</p>
+        <input oninput="colorChanging(this)" type="color" id="backgroundColor">
+      </div>
+      <div>
+        <p>Couleur du fond des éléments</p>
+        <input oninput="colorChanging(this)" type="color" id="backgroundElementColor">
+      </div>
+      <div>
+        <p>Couleur du fond des boutons</p>
+        <input oninput="colorChanging(this)" type="color" id="backgroundButtonColor">
+      </div>
+      <div>
+        <p>Couleur des textes</p>
+        <input oninput="colorChanging(this)" type="color" id="foregroundColor">
+      </div>
+      <div>
+        <p>Couleur des contours</p>
+        <input oninput="colorChanging(this)" type="color" id="borderColor">
+      </div>
+    </div>
+  </div>
+
+  <script src="library/Sortable.js"></script>
+  <script src="selectdropdown.js"></script>
+  <script src="client.js"></script>
+</body>
+
+</html>

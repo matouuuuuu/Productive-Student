@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+
+<head>
+  <meta charset="utf-8">
+  <title>Productive Student</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Farro&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+  <script src="jquery-ui-touch-punch-master/jquery.ui.touch-punch.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"
+    integrity="sha256-+C0A5Ilqmu4QcSPxrlGpaZxJ04VjsRjKu+G82kl5UJk=" crossorigin="anonymous"></script>
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css"
+    integrity="sha256-ze/OEYGcFbPRmvCnrSeKbRTtjG4vGLHXgOqsyLFTRjg=" crossorigin="anonymous" />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="favico/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16x16.png">
+  <link rel="manifest" href="favico/site.webmanifest">
+</head>
+<body>
+    <div class="theme-switch-wrapper connexionSwitch">
+        <label class="theme-switch" for="checkbox">
+            <input onchange="switchTheme(this)" type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+    </div>
+    <div class="marketPlaceContent">
+
+        <h1>Productive Student MarketPlace</h1>
+        
+        <div class="themes">
+            <a onclick="downloadSetTheme()" href="#">
+                <h2>Matrix Theme</h2>
+                
+<p>Retrouvez le style de Matrix, avec ce thème animé.</p>
+                <img src="images/marketPlaceImages/matrixpresented.jpg">
+                <script src="marketPlaceThemes/matrixtheme.js"></script>
+            </a>
+                
+        
+            </div>
+        </div>
+    </div>
+    
+    <script src="marketplace.js"></script>
+</body>

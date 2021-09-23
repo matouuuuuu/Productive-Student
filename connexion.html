@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Connexion - Productive Student</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="favico/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favico/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favico/favicon-16x16.png">
+    <link rel="manifest" href="favico/site.webmanifest">
+</head>
+
+<body>
+
+    <div class="theme-switch-wrapper connexionSwitch">
+        <label class="theme-switch" for="checkbox">
+            <input onchange="switchTheme(this)" type="checkbox" id="checkbox" />
+            <div class="slider round"></div>
+        </label>
+    </div>
+    <div class="login">
+        <div class="loginForm">
+
+            <img id="mainLogo" src="images/logo1darkmode.png">
+            <form>
+                <input type="text" name="name" id="name" placeholder="Entrer votre nom">
+                <input type="password" name="password" id="pass" placeholder="Mots de passe">
+            </form>
+            <button onclick="connect()">Connexion</button>
+            <a href='inscription.html'>Vous êtes nouveau? Inscrivez vous ici.</a>
+            <p id='info'></p>
+
+        </div>
+
+    </div>
+
+    <script src="connexion.js" defer></script>
+</body>
+
+</html>
